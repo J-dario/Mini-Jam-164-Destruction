@@ -31,6 +31,7 @@ visible = false
 position = Vector2(100, 49)
 
 [node name="Terminal" parent="." instance=ExtResource("6_ktfl0")]
+visible = false
 position = Vector2(25, 315)
 
 [node name="PaperSpawn" type="Marker2D" parent="."]
