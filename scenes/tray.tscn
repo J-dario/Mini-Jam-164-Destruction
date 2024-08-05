@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://da2q5bah7uuf2"]
+
+[ext_resource type="Script" path="res://scripts/Tray.gd" id="1_84moi"]
+[ext_resource type="Texture2D" uid="uid://86pftr8ok4p3" path="res://sprites/Tray.png" id="2_77t4c"]
+[ext_resource type="Texture2D" uid="uid://dgj1jur8eq6ka" path="res://sprites/trayExtra.png" id="3_3robo"]
+[ext_resource type="Texture2D" uid="uid://ruqnhbnspk88" path="res://sprites/ButtonSheet.png" id="4_88o8d"]
+[ext_resource type="AudioStream" uid="uid://bnjuwevb7syvb" path="res://sound/pickupCoin (1).wav" id="5_kjrpr"]
+[ext_resource type="AudioStream" uid="uid://wbx0jllj884l" path="res://sound/click-button-166324.mp3" id="6_ieml4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0icc"]
+size = Vector2(63.75, 25.25)
+
+[node name="Tray" type="Area2D"]
+script = ExtResource("1_84moi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_77t4c")
+region_enabled = true
+region_rect = Rect2(0, 0, 136, 109)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(30.875, -34.625)
+shape = SubResource("RectangleShape2D_j0icc")
+
+[node name="EX1" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 97)
+texture = ExtResource("3_3robo")
+
+[node name="ButtonS1" type="Sprite2D" parent="EX1"]
+position = Vector2(-26, 5)
+texture = ExtResource("4_88o8d")
+region_enabled = true
+region_rect = Rect2(0, 0, 43, 43)
+
+[node name="Button1" type="Button" parent="EX1"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -48.0
+offset_top = -17.0
+offset_right = -4.0
+offset_bottom = 27.0
+
+[node name="SpriteS2" type="Sprite2D" parent="EX1"]
+position = Vector2(41, 5)
+texture = ExtResource("4_88o8d")
+region_enabled = true
+region_rect = Rect2(0, 43, 43, 43)
+
+[node name="Button2" type="Button" parent="EX1"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 19.0
+offset_top = -17.0
+offset_right = 63.0
+offset_bottom = 27.0
+
+[node name="EX2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 189)
+texture = ExtResource("3_3robo")
+
+[node name="ButtonS3" type="Sprite2D" parent="EX2"]
+position = Vector2(-26, 5)
+texture = ExtResource("4_88o8d")
+region_enabled = true
+region_rect = Rect2(0, 86, 43, 43)
+
+[node name="Button3" type="Button" parent="EX2"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -48.0
+offset_top = -17.0
+offset_right = -4.0
+offset_bottom = 27.0
+
+[node name="SpriteS3" type="Sprite2D" parent="EX2"]
+position = Vector2(41, 5)
+texture = ExtResource("4_88o8d")
+region_enabled = true
+region_rect = Rect2(0, 129, 43, 43)
+
+[node name="Button4" type="Button" parent="EX2"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 19.0
+offset_top = -17.0
+offset_right = 63.0
+offset_bottom = 27.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kjrpr")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ieml4")
+volume_db = -13.118
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="button_down" from="EX1/Button1" to="." method="_on_button_1_button_down"]
+[connection signal="button_up" from="EX1/Button1" to="." method="_on_button_1_button_up"]
+[connection signal="button_down" from="EX1/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_up" from="EX1/Button2" to="." method="_on_button_2_button_up"]
+[connection signal="button_down" from="EX2/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_up" from="EX2/Button3" to="." method="_on_button_3_button_up"]
+[connection signal="button_down" from="EX2/Button4" to="." method="_on_button_4_button_down"]
+[connection signal="button_up" from="EX2/Button4" to="." method="_on_button_4_button_up"]

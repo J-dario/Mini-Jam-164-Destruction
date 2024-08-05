@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxl02kdkkrsjr"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_b63qe"]
+[ext_resource type="Texture2D" uid="uid://ch45v6n2ccm64" path="res://sprites/BG.png" id="1_u06s4"]
+[ext_resource type="PackedScene" uid="uid://b4nmdl1r2u3un" path="res://scenes/shredder.tscn" id="2_x8a4n"]
+[ext_resource type="PackedScene" uid="uid://da2q5bah7uuf2" path="res://scenes/tray.tscn" id="4_exp6s"]
+[ext_resource type="PackedScene" uid="uid://cyy0vrkj5vuau" path="res://scenes/stamp.tscn" id="5_n8wer"]
+[ext_resource type="PackedScene" uid="uid://dfk6k8wqglhw" path="res://scenes/terminal.tscn" id="6_ktfl0"]
+[ext_resource type="Script" path="res://scripts/Label.gd" id="7_6ugjx"]
+[ext_resource type="PackedScene" uid="uid://d0y1mn65i7232" path="res://scenes/character_ui.tscn" id="8_wo545"]
+[ext_resource type="AudioStream" uid="uid://btecoiqbeepmx" path="res://sound/paper-rustle-81855.mp3" id="9_dqnyj"]
+[ext_resource type="AudioStream" uid="uid://dianai8cvw5dq" path="res://sound/yay-6120.mp3" id="10_m8ti7"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_b63qe")
+
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("1_u06s4")
+
+[node name="Shredder" parent="." instance=ExtResource("2_x8a4n")]
+position = Vector2(505, 344)
+
+[node name="Tray" parent="." instance=ExtResource("4_exp6s")]
+position = Vector2(572, 54)
+
+[node name="PaperContainer" type="Node2D" parent="."]
+
+[node name="Stamp" parent="." instance=ExtResource("5_n8wer")]
+visible = false
+position = Vector2(100, 49)
+
+[node name="Terminal" parent="." instance=ExtResource("6_ktfl0")]
+position = Vector2(25, 315)
+
+[node name="PaperSpawn" type="Marker2D" parent="."]
+position = Vector2(323, 158)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("7_6ugjx")
+
+[node name="CharacterUI" parent="." instance=ExtResource("8_wo545")]
+position = Vector2(46, 189)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 9.0
+autostart = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 68.0
+offset_top = 18.0
+offset_right = 579.0
+offset_bottom = 124.0
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 224.0
+offset_top = 280.0
+offset_right = 419.0
+offset_bottom = 311.0
+text = "Close
+"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_dqnyj")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_m8ti7")
+volume_db = -8.432
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="CharacterUI"]

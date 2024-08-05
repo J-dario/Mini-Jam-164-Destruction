@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyy0vrkj5vuau"]
+
+[ext_resource type="Script" path="res://scripts/stamp.gd" id="1_3juk7"]
+[ext_resource type="Texture2D" uid="uid://bm7s551uc5tfc" path="res://sprites/StampSheet.png" id="1_67exw"]
+[ext_resource type="AudioStream" uid="uid://dhsnsw5imq2at" path="res://sound/stamp-81635.mp3" id="3_h1oa7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxc57"]
+size = Vector2(127, 60)
+
+[node name="Stamp" type="Node2D"]
+script = ExtResource("1_3juk7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_67exw")
+region_enabled = true
+region_rect = Rect2(0, 0, 126, 89)
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -49.0
+offset_top = -45.0
+offset_right = 49.0
+offset_bottom = -13.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 21)
+shape = SubResource("RectangleShape2D_oxc57")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_h1oa7")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

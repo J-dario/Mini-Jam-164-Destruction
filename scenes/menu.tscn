@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c51cu2h4bpttd"]
+
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_y5h4m"]
+[ext_resource type="Texture2D" uid="uid://c8u0gnu00wse6" path="res://sprites/Title.png" id="2_gutj2"]
+[ext_resource type="FontFile" uid="uid://2tj0hw33h0hn" path="res://sprites/PixelOperator8-Bold.ttf" id="3_mlgh5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y5h4m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(320, 180)
+texture = ExtResource("2_gutj2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 239.0
+offset_right = 428.0
+offset_bottom = 305.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="HowToPlay" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "How to Play"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 129.0
+offset_right = 633.0
+offset_bottom = 169.0
+theme_override_colors/font_color = Color(0.94902, 0.941176, 0.898039, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/font = ExtResource("3_mlgh5")
+theme_override_font_sizes/font_size = 40
+text = "You Got Promoted!"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]

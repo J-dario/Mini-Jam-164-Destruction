@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://c64o543uar6tu"]
+
+[ext_resource type="Script" path="res://scripts/howPlay.gd" id="1_d7lbx"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d7lbx")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+offset_left = 229.0
+offset_top = 299.0
+offset_right = 409.0
+offset_bottom = 339.0
+text = "Back"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 27.0
+offset_right = 637.0
+offset_bottom = 284.0
+text = "Welcome new hire to Cat Inc.  You are the new secretary in charge of 
+escalating customer complaints.
+
+Click and Drag to move valid complaints to the tray!
+Any invalid complaints should be shredded!
+
+If you do a good job you'll get a promotion and get more work!
+
+This entire company is riding on your back, make 3 mistakes and we go 
+bankrupt!"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

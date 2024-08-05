@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://djp572fv627fw"]
+
+[ext_resource type="Script" path="res://scripts/phone.gd" id="1_21lrm"]
+[ext_resource type="Texture2D" uid="uid://bb4686068ew8f" path="res://sprites/PhoneSheet.png" id="1_yh0rm"]
+[ext_resource type="FontFile" uid="uid://2tj0hw33h0hn" path="res://sprites/PixelOperator8-Bold.ttf" id="2_5byyw"]
+
+[node name="Phone" type="Node2D"]
+script = ExtResource("1_21lrm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_yh0rm")
+region_enabled = true
+region_rect = Rect2(0, 0, 50, 90)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -25.0
+offset_right = 24.0
+offset_bottom = -1.0
+theme_override_fonts/font = ExtResource("2_5byyw")
+theme_override_font_sizes/font_size = 24
+text = "0"
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -23.0
+offset_top = 17.0
+offset_right = 16.0
+offset_bottom = 37.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
